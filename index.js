@@ -1,13 +1,15 @@
+
+
+
 const express = require('express');
+const villains = require('./villains')
 const app = express();
 
 
 
 app.get('/', (req, res) => {
-    return res.send('Hello, World!');
+    return res.send(villains);
 })
-
-
 
 
 
