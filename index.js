@@ -1,17 +1,19 @@
 
 
 
-const express = require('express');
+const express = require('express')
+const bodyParser = require('body-parser')
 const villains = require('./villains')
-const app = express();
+const { getAllVillains, getVillainBySlug, saveNewVillain } = require('./controller/villains.js')
 
 
+const app = express()
 
-app.get('/', (req, res) => {
-    return res.send(villains);
-})
+app.get('/', getAllVillains)
 
+app.get('/:slug', getVillainBySlug)
 
+app.post('/', bodyParser.json(), saveNewVillain)
 
 
 app.listen(1337, () => {
