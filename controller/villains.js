@@ -10,7 +10,7 @@ const  getAllVillains = (request, response) => {
 
 const  getVillainBySlug = (request, response) => {
   const { slug } = request.params
-  const foundVillain = villains.filter((hero) => hero.slug === slug)
+  const foundVillain = villains.filter((foundVillain) => foundVillain.slug === slug)
 
   return response.send(foundVillain)
 }
@@ -21,13 +21,13 @@ const  saveNewVillain = (request, response) => {
   const { name, realName, firstAppearance, slug } = request.body
 
   if (!name || !realName || !firstAppearance || !slug) {
-    return response.status(400).send('The following fields are required: name, realName, firstAppearance, slug')
+    return response.status(400).send('The following fields are required: name, movie, slug')
   }
   const newVillain = { name, realName, firstAppearance, slug }
 
   villains.push(newVillain)
 
-  return response.status(201).send(newHero)
+  return response.status(201).send(newVillain)
 }
 
 
