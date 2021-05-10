@@ -9,7 +9,7 @@ const { getAllVillains, getVillainBySlug, saveNewVillain } = require('./controll
 
 const app = express()
 
-app.get('/', getAllVillains)
+app.get('/villains', getAllVillains)
 
 app.get('/:slug', getVillainBySlug)
 

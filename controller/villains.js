@@ -15,11 +15,14 @@ const  getAllVillains =  async (request, response) => {
 
 
 //GET VILLAIN BY SLUG
-const  getVillainBySlug = (request, response) => {
+const  getVillainBySlug = async (request, response) => {
   const { slug } = request.params
-  const foundVillain = villains.filter((foundVillain) => foundVillain.slug === slug)
+  const foundVillainBySlug = await villainsModels.villains.findOne()
 
-  return response.send(foundVillain)
+  return response.send(foundVillainBySlug)
+
+
+
 }
 
 
