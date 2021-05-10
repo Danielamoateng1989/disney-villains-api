@@ -1,15 +1,11 @@
-const villains = (connection, sequelize) => {
-        return connection.define('disneyVillains', 
-        {
-            id: { type: sequelize.INTEGER, autoIncrement: true, primaryKey: true},
-            name: { type: sequelize.STRING},
-            movie: { type: sequelize.STRING},
-            slug: { type: sequelize.STRING}
-    
-        }, {paranoid: true})
-    
-    }
-    
-    
-    
-    module.exports = villains
+const Sequelize = require('sequelize')
+const villainsModels = require('./villains')
+
+
+const connection = new Sequelize('villains', 'VillainsUser', 'Dannyboy12345!',
+ {host: 'localhost', dialect: 'mysql'})
+
+ const villains = villainsModels(connection, Sequelize)
+
+
+ module.exports = { villains }

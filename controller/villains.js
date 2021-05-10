@@ -1,19 +1,28 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
-const villains = require('../villains')
+const villains = require('../models/villains')
+const villainsModels = require('../models')
 
 
-const  getAllVillains = (request, response) => {
-  return response.send(villains)
+
+
+
+//GET ALL VILLAINS FROM DATABSE
+const  getAllVillains =  async (request, response) => {
+   const villains =  await villainsModels.villains.findAll();
+   return response.send(villains)
 }
 
 
+//GET VILLAIN BY SLUG
 const  getVillainBySlug = (request, response) => {
   const { slug } = request.params
   const foundVillain = villains.filter((foundVillain) => foundVillain.slug === slug)
 
   return response.send(foundVillain)
 }
+
+
 
 
 // eslint-disable-next-line no-unused-vars
